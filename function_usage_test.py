@@ -5,7 +5,7 @@ Created on Wed May  4 10:46:34 2022
 @author: wilamowsse01
 """
 
-test_case = input('Execute test (oracle_connection = 1/file_name = 2:)')
+test_case = input('Execute test (oracle_connection = 1/file_name = 2,ask file path = 3:)')
 
 if test_case == 1:
     import oracle_cn_encr
@@ -13,7 +13,7 @@ if test_case == 1:
     oracle_cn_encr.oracle_connect_encripted()
     
     oracle_cn_encr.orcl.close() 
-else:
+elif test_case == 2:
     FCTRY_CNTRY_CODE = "US"
     PUBLICATION_ID = "37"
     PUBLICATION_DATE = "20220504"
@@ -30,3 +30,12 @@ else:
     output_file_name(FCTRY_CNTRY_CODE,PUBLICATION_ID,PUBLICATION_DATE,f_name)
     print(fl_n_txt)
     print(fl_n_csv)
+else:
+    import tkinter as tk
+    from tkinter import filedialog
+
+    root = tk.Tk()
+    root.withdraw()
+
+    file_path = filedialog.askopenfilename()
+    print(file_path)

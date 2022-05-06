@@ -5,7 +5,7 @@ Created on Wed May  4 10:46:34 2022
 @author: wilamowsse01
 """
 
-test_case = input('Execute test (oracle_connection = 1/file_name = 2,ask file path = 3): ')
+test_case = input('Execute test (oracle_connection = 1/file_name = 2/ask file path = 3/append log to the log file = 4): ')
 print(test_case)
 test_case_int = int(test_case)
 
@@ -28,8 +28,19 @@ elif test_case_int == 2:
     print(file_name.fl_n_txt)
     print(file_name.fl_n_csv)
 
-else:
+elif test_case_int == 3:
     import file_dialog
     
     file_dialog.fl_dialog()
     print(file_dialog.file_path)
+    
+else:
+    import add_logs
+    
+    log_list = ['The script executed in the mode: ', test_case]
+    add_logs.add_log(log_list)
+
+    
+
+    
+

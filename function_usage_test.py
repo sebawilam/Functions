@@ -5,7 +5,7 @@ Created on Wed May  4 10:46:34 2022
 @author: wilamowsse01
 """
 
-test_case = input('Execute test (oracle_connection = 1/file_name = 2/ask file path = 3/append log to the log file = 4): ')
+test_case = input('Execute test (oracle_connection = 1/file_name = 2/ask file path = 3/query_maker = 4/append log to the log file = 5): ')
 # print(test_case)
 test_case_int = int(test_case)
 
@@ -34,6 +34,25 @@ elif test_case_int == 3:
     
     file_dialog.fl_dialog()
     print(file_dialog.file_path)
+    
+elif test_case_int == 4:
+    import query_maker
+    
+    country = input('Country: ')
+    table = input('Table name: ')
+    a = input('If selected column type 1/ If all columns type 0: ')
+    c = input('If where conditon type 1/ If no where condition type 0: ')
+    if int(a) == 1:
+        columns = input('Type column names, separated by comma: ')
+    else:
+        columns = ""
+    if int(c) == 1:
+        condition = input('Type where condition: ')
+    else:
+        condition = ""
+
+    query_maker.qry(country,table,a,c,columns,condition)
+    print(query_maker.q_table)
     
 else:
     import add_logs2
